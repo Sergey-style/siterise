@@ -1,0 +1,875 @@
+
+
+*{
+	padding:0;
+	margin:0;
+	border:0;
+}
+*,*:before,*:after{
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box;
+}
+:fokus,:active{outline:none;}
+a:focus,a:active{outline:none;}
+
+nav,footer,header,aside{display:block;}
+html,body{
+	height:100%;
+	width:100%;
+	font-size:100%;
+	line-height:1;
+	font-size:14px;
+	-ms-text-size-adjust:100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+input,button,textarea{font-family:inherit;}
+input::-ms-clear{display:none;}
+button{cursor:pointer;}
+button::-moz-fokus-inner{padding:0;border:0;}
+a,a:visited{text-decoration:none;}
+a:hover{text-decoration:none;}
+ul li{list-style:none;}
+img{vertical-align:top;}
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:400}
+/*стили для демонстрации*/
+*,*:before,*:after{
+	padding:0;
+	margin:0;
+	border:0;
+	box-sizing:border-box;
+}
+
+font-family: 'Open Sans', sans-serif;
+font-family: 'Lato', sans-serif;
+font-family: 'Poppins', sans-serif;
+font-family: 'Oswald', sans-serif;
+font-family: 'Roboto', sans-serif;
+
+html,body{
+	height: 100%;
+}
+body{
+
+}
+.wrapper {
+	min-height: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+.content{
+	flex: 1 1 auto;
+}
+
+/*основные стили*/
+.container {/*ограничеваем наш контэйнер(текст,лого,меню) по ширине*/
+	max-width: 1180px;
+	margin: 0px auto;
+	padding: 0px 10px;
+}
+/*-------------------------------------------header-----------------------------*/
+.header {
+	position: fixed;/*фиксация плашки на верху*/
+	width:100%;
+	top: 0 ;
+	left: 0;
+	z-index: 50;
+}
+.header:before{/*оформление плашки на которой находятся логтип,меню,бургер*/
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #ffffff;
+	z-index: 2;
+}
+
+.header_body {/*логтип,меню,бургер*/
+	position: relative;
+	display: flex;/*буквы поднимаются и заезжают на логотип*/
+	justify-content: space-between;/*слова(меню) и логотип разбрасуются в разные стороны*/
+	height: 80px;/*плашка уменьшается до 80px*/
+	align-items: center;/*выстраеваем контент по горизонтале*/
+}
+.header_logo {/*оформление логотипа*/
+	font-family: 'Open Sans';
+	font-size: 24px;
+	line-height: 48px;
+	font-weight: 700;
+	color: #ecf0f1;
+	outline: hidden;
+	position: relative;
+	z-index: 3;
+}
+
+.header_logo img{
+	max-width: 100%;/*любая картинка теперь сможет подстроится под наш размер*/
+	display: block;/*картинка будет без подрезания*/
+}
+
+.header_burger {/*скрываем бургер для размеров выше 767px*/
+   display: none;
+}
+
+.header_list {
+	display: flex;/*колонка с меню превращается в строку и она помещается на плашке*/
+	position: relative;
+	z-index: 2;
+}
+.header_list li{/*отступ между словами в меню*/
+	list-style: none;
+	margin: 0 0 0 20px;
+}
+.header_link {/*оформление меню(слов)*/
+	font-family: Nunito;
+	font-size: 20px;
+	line-height: 14px;
+	font-weight: 400;
+	letter-spacing: 0.015em;
+	color: #bab8b8;
+}
+.header_link:hover {
+   color: #4497f3;
+}
+
+.content {/*отступ текста от шапки сайта*/
+	padding: 100px 0 0 0;
+}
+
+@media (max-width: 767px){/*медиа запрос для всего что меньше 767px*/
+	    body.lock{/*блокируется скрол под выехавшем меню*/
+    	overflow: hidden;
+    }
+    .header_body{/*высота(фиолетовой) шапки уменьшаем до 50px*/
+    	height: 50px;
+    }
+    .header_logo{
+    	max-width: 90px;
+    }
+	.header_burger{
+	display: block;
+	position: relative;
+	width: 30px;/*размеры меню бургер*/
+	height: 20px;/*размеры меню бургер*/
+	position: relative;
+	z-index: 3;
+	}
+
+	.header_burger span{/*рисуем меню бургер, средняя полоса бургера*/
+		position: absolute;
+		background-color:  #4497f3;
+		width: 100%;
+		height: 2px;
+		left: 0;
+		top: 9px;/*поднимаем на 9px нашу полоску*/
+		transition: all 0.3s ease 0s;/*добавляет анимацию-бургер медленно превращается в крестик*/
+	}
+
+	.header_burger:before,
+	.header_burger:after{/*рисуем меню бургер*/
+		content: '';
+		background-color:  #4497f3;
+		position: absolute;
+		width: 100%;
+		height: 2px;
+		left: 0;
+		transition: all 0.3s ease 0s;/*добавляет анимацию-бургер медленно превращается в крестик*/
+	}
+
+	.header_burger:before{/*верхняя полоса бургера*/
+		top: 0;
+	}
+		.header_burger:after{/*нижняя полоса бургера*/
+        bottom: 0;
+  }
+
+  .header_menu {/*оформление меню при размере меньше 767px*/
+	position: fixed;
+	top: -100%;/*меню прячется за плашку,пока не нажмешь на бургер*/
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;/*включает скрол, при горизонтальном положении можно будет добраться до всех пунктов меню */
+	transition: all 0.3s ease 0s;/*анимация меню(будет выезжать шторка с меню из плашки фиолет.)*/
+	background-color:  #4497f3;
+	padding: 70px 10px 20px 10px;/*отступы меню*/
+    margin: 0 0px 0 0px;
+}
+.header_link {/*оформление меню(слов)*/
+	color: #ffffff;
+}
+.header_menu.active{
+	top: 0;/*меню появляется при нажатии на бургер*/
+}
+    /*при нажатии на бургер появляется крестик*/
+    .header_burger.active span{
+       transform: scale(0);/*убираем среднюю палочку*/
+    }
+
+	.header_burger.active:before{/*делаем из бургера крестик*/
+		transform: rotate(45deg);
+		top: 9px;/*регулируем по высоте палочки, чтобы вышел крестик*/
+	}
+		.header_burger.active:after{/*делаем из бургера крестик*/
+		transform: rotate(-45deg);
+		bottom: 9px;/*регулируем по высоте палочки, чтобы вышел крестик*/
+  }
+
+  .header_list {/*меняем flex на block  строка с меню превращается в колонку*/
+  	display: block;
+}
+.header_list li{
+	margin: 0 0 20px 0;/*отступы между словами меню*/
+}
+.header_link{
+	font-size: 24px;/*увеличиваем шрифт меню*/
+}
+
+.content {
+	padding: 100px 0 0 0;
+}
+.content_text {/*содержимое страницы текста*/
+	font-size: 18px;
+	line-height: 25px;
+}
+.content_text p{/*отступы между параграфами текста*/
+	margin: 0 0 20px 0;
+}
+}
+@media(max-width:767px){
+	.content{
+
+		padding: 60px 0 0 0;/*возвращаем не место уменьшенной щапки контент*/
+	}
+	
+
+}
+
+/*-----------------------------------travel--------------------------------------*/
+
+.main_travel {
+background: #ffffff url(../img/vector_smart_object_7.png)no-repeat right;
+padding: 200px 30px 180px 30px;
+}
+.row_travel {}
+.travel_left {}
+.travel_left_title {
+	font-family: 'Nunito Sans';
+font-size: 75px;
+line-height: 80px;
+font-weight: 800;
+letter-spacing: 0.04em;
+color: #091e40;
+margin-bottom: 80px;
+}
+.travel_left_text {
+	font-family: 'Nunito Sans';
+font-size: 22px;
+line-height: 35px;
+font-weight: 400;
+letter-spacing: 0.01em;
+color: #81858e;
+margin-bottom: 96px;
+}
+.travel_left_button {
+	font-family: 'Nunito Sans';
+font-size: 20px;
+line-height: 35px;
+font-weight: 600;
+letter-spacing: 0.01em;
+color: #ffffff;
+
+background-color: #3984f3;
+padding: 13px 45px 13px 45px;
+margin-left: 100px;
+
+}
+/*----------------------------------------amazing -------------------------------------*/
+.main_amazing {
+	background: #ffffff;
+	padding: 150px 0 5px 0;
+}
+.otstup {
+	padding: 0 20px 0 20px;
+}
+.amazing_row {
+	display: flex;
+	flex: 100%;
+	justify-content: center;
+}
+.amazing_left {
+	flex: 0 1 50%;
+}
+.amazing_left_img {
+	margin-bottom: 140px;
+}
+.slider_amazing {
+	display: flex;
+}
+.slider_amazing_item {
+	margin-right: 35px;
+}
+.amazing_right {
+	flex: 0 1 50%;
+}
+.amazing_right_info {}
+.amazing_right_title {
+	font-family: 'Nunito Sans';
+font-size: 50px;
+line-height: 62px;
+font-weight: 600;
+letter-spacing: 0.02em;
+color: #091e40;
+margin-bottom: 110px;
+}
+.amazing_right_text {
+	font-family: 'Nunito Sans';
+font-size: 22px;
+line-height: 42px;
+font-weight: 400;
+letter-spacing: 0.01em;
+color: #81858e;
+margin:0 20px 60px 0;
+}
+.amazing_right_botton {
+	font-family: 'Nunito Sans';
+font-size: 23px;
+line-height: 42px;
+font-weight: 600;
+letter-spacing: 0.01em;
+color: #ffffff;
+
+background-color: #3984f3;
+padding: 13px 65px 13px 65px;
+
+}
+@media(max-width: 1380px){
+ .amazing_row {
+   flex-direction: column;
+}
+.slider_amazing {
+	justify-content: space-around;
+}
+.slider_amazing img{
+	width: 100%;
+}
+.amazing_right{
+	text-align: center;
+}
+}
+@media(max-width: 920px){
+	.slider_amazing{
+		flex-direction: column;
+		text-align: center;
+	}
+	.main_amazing {
+	padding: 50px 0 55px 0;
+}
+.amazing_right_title {
+   margin-bottom: 50px;
+}
+.travel_left_button {
+	margin: 0 auto;
+}
+}
+
+
+/*--------------------------------------------featured-------------------------------*/
+.main_featured {
+	background-color: #ffffff;
+	padding: 150px 0 115px 0;
+}
+.row_featured {}
+.featured_title {
+	font-family: 'Nunito Sans';
+font-size: 50px;
+line-height: 61px;
+font-weight: 600;
+letter-spacing: 0.02em;
+color: #091e40;
+text-align: center;
+margin-bottom: 100px;
+}
+.featured_subtitle {
+	font-family: 'Nunito Sans';
+font-size: 22px;
+line-height: 41px;
+font-weight: 400;
+letter-spacing: 0.01em;
+color: #81858e;
+text-align: center;
+margin-bottom: 115px;
+
+}
+.columns_featured {
+	display: flex;
+	flex-wrap: wrap;
+}
+.column_left_featured {
+	flex: 0 1 70%;
+}
+.column_left_featured_img {
+	margin-right: 30px;
+	margin-bottom: 20px;
+}
+.column_left_featured_img img{
+	width: 100%;
+}
+.column_right_featured {
+	flex: 0 1 30%;
+}
+.column_right_featured_kard {
+	display: flex;
+	margin-bottom: 23px;
+}
+.column_right_featured_kard_img {}
+.column_right_featured_info{
+	margin-left: 15px;
+}
+
+.column_right_featured_kard_title {
+font-family: 'Nunito Sans';
+font-size: 26px;
+line-height: 34px;
+font-weight: 600;
+letter-spacing: 0.01em;
+color: #091e40;
+}
+.column_right_featured_kard_data {
+	opacity: 0.7;
+font-family: 'Nunito Sans';
+font-size: 20px;
+line-height: 34px;
+font-weight: 400;
+letter-spacing: 0.01em;
+color: #091e40;
+}
+
+@media(max-width: 1000px){
+	.column_left_featured{
+	}
+	.column_right_featured{
+	   flex: 0 1 100%;
+	   align-items: center;
+	}
+}
+@media(max-width: 768px){
+	.main_featured {
+	padding: 50px 0 65px 0;
+}
+.featured_title {
+margin-bottom: 50px;
+}
+}
+/*-------------------------------------slick-slider----------------------------------*/
+/*Слайдер*/
+.slick-slider{}
+/*Ограничивающая оболочка*//*если слайдер явл. флекс элементом нужно указать min width=0;*/
+.slick-list{
+	overflow: hidden;
+}
+/*Лента слайдов*/
+.slick-track{
+	display: flex;
+	align-items: flex-start;/*слайдер автом. подстраивается по высоте под слайды разн выс.*/
+}
+
+
+/*конкретный слайдер*/
+.slider {
+	position: relative;
+	padding: 0 60px;/*отступ стрелок от слайда*/
+}
+/*нужен для вертикального слайда,если горизонтальный не пишем его*/
+/*.slider .slick-track{
+	display: block;
+}*/
+
+.slider .slick-arrow {
+	position: absolute;
+	top: 50%;
+	z-index: 10;
+	margin: -30px 0 0 0;/*поднимаем стрел по вертикале и ставим по центру слайда*/
+	font-size: ;/*ставим значение 0 и пропадают кноп перекл,чтобы поставить свои стрелки*/
+	width: 30px;/*такого размера будут стрелки*/
+	height: 60px;
+}
+.slider .slick-arrow.slick-prev{
+	left: 0;/*ставим стрелку слева*/
+	background: url()0 0/100% no-repeat;/*добавляем img и ставим свою стрелку*/
+}
+.slider .slick-arrow.slick-next{/*ставим стрелку справа*/
+	right: 0;/*ставим стрелку справа*/
+	background: url()0 0/100% no-repeat;/*добавляем img и ставим свою стрелку*/
+}
+.slider .slick-arrow.slick-disadled{
+	opacity: 0.2;/*стрелка стан. прозрачная,когда последний слайд */
+}
+/*точки*/
+.slider .slick-dots{
+	display: flex;
+	align-items: center;
+	justify-content: center;/*ставим поцентру точки*/
+}
+.slider .slick-dots li{
+	list-style: none;
+	margin: 0 10px;/*делаем отступы между точками*/
+}
+.slider .slick-dots button{
+	font-size: 0;/*убираем надписи(цифры) вместо них будут точки*/
+	width: 10px;/*делаем дальше точки*/
+	height: 10px;
+	background-color: black;
+	border-radius: 50%;
+}
+
+.slider .slick-dots li.slick-active button{/*стиль для активной точки*/
+	background: transparent;/*делаем активную точку прозрачной*/
+	border: solid 1px black;/*контур точки черный*/
+}
+
+
+/*эфект- слайды по сторонам затемнены, а по центру видно хорошо*/
+.slider_item{
+	/*transition: all 0.3s ease 0s;
+	text-align: center;/*ставим слайд по центру*/
+	/*opacity: 0.4;/*делаем наши слайды прозрачными*/
+}
+.slider_item.slick-center{
+	/*opacity: 1;/*главный слайд,центральный-делаем не прозрачным*/
+}
+
+/*====верстка ТЕКСТА БЛОКА СЛАЙДА====*/
+.main_sliderbig {
+	background-color: #ffffff;
+	padding: 100px 0 115px 0;
+}
+.row_sliderbig {}
+.sliderbig_item {
+	flex: 100%;
+	justify-content: center;
+} 
+.sliderbig_title {
+	font-family: 'Nunito Sans';
+font-size: 50px;
+line-height: 61px;
+font-weight: 600;
+letter-spacing: 0.02em;
+color: #091e40;
+text-align: center;
+margin-bottom: 100px;
+}
+.sliderbig_subtitle {
+	font-family: 'Nunito Sans';
+font-size: 22px;
+line-height: 41px;
+font-weight: 400;
+letter-spacing: 0.01em;
+color: #81858e;
+text-align: center;
+margin-bottom: 115px;
+}
+
+@media(max-width: 768px){
+	.main_sliderbig {
+	padding: 50px 0 55px 0;
+}
+.sliderbig_title {
+	margin-bottom: 50px;
+}
+}
+
+
+
+/*-------------------------------------slick-slider----------------------------------*/
+.main_/*Слайдер*/
+.slick-slider{}
+/*Ограничивающая оболочка*//*если слайдер явл. флекс элементом нужно указать min width=0;*/
+.slick-list{
+	overflow: hidden;
+}
+/*Лента слайдов*/
+.slick-track{
+	display: flex;
+	align-items: flex-start;/*слайдер автом. подстраивается по высоте под слайды разн выс.*/
+}
+
+
+/*конкретный слайдер*/
+.slider-smole {
+	position: relative;
+	padding: 0 60px;/*отступ стрелок от слайда*/
+}
+/*нужен для вертикального слайда,если горизонтальный не пишем его*/
+/*.slider .slick-track{
+	display: block;
+}*/
+
+.slider-smole .slick-arrow {
+	position: absolute;
+	top: 50%;
+	z-index: 10;
+	margin: -30px 0 0 0;/*поднимаем стрел по вертикале и ставим по центру слайда*/
+	font-size: ;/*ставим значение 0 и пропадают кноп перекл,чтобы поставить свои стрелки*/
+	width: 30px;/*такого размера будут стрелки*/
+	height: 60px;
+}
+.slider-smole .slick-arrow.slick-prev{
+	left: 0;/*ставим стрелку слева*/
+	background: url()0 0/100% no-repeat;/*добавляем img и ставим свою стрелку*/
+}
+.slider-smole .slick-arrow.slick-next{/*ставим стрелку справа*/
+	right: 0;/*ставим стрелку справа*/
+	background: url()0 0/100% no-repeat;/*добавляем img и ставим свою стрелку*/
+}
+.slider-smole .slick-arrow.slick-disadled{
+	opacity: 0.2;/*стрелка стан. прозрачная,когда последний слайд */
+}
+/*точки*/
+.slider-smole .slick-dots{
+	display: flex;
+	align-items: center;
+	justify-content: center;/*ставим поцентру точки*/
+}
+.slider-smole .slick-dots li{
+	list-style: none;
+	margin: 0 10px;/*делаем отступы между точками*/
+}
+.slider-smole .slick-dots button{
+	font-size: 0;/*убираем надписи(цифры) вместо них будут точки*/
+	width: 10px;/*делаем дальше точки*/
+	height: 10px;
+	background-color: black;
+	border-radius: 50%;
+}
+
+.slider-smole .slick-dots li.slick-active button{/*стиль для активной точки*/
+	background: transparent;/*делаем активную точку прозрачной*/
+	border: solid 1px black;/*контур точки черный*/
+}
+
+
+/*эфект- слайды по сторонам затемнены, а по центру видно хорошо*/
+.slider_item{
+	/*transition: all 0.3s ease 0s;
+	text-align: center;/*ставим слайд по центру*/
+	/*opacity: 0.4;/*делаем наши слайды прозрачными*/
+}
+.slider_item.slick-center{
+	/*opacity: 1;/*главный слайд,центральный-делаем не прозрачным*/
+}
+
+
+
+/*--------верстка текста сайта----------------------*/
+.main_expiriences {
+	background-color: #ffffff;
+	padding: 133px 0 251px 0;
+}
+.row_expiriences {}
+.expiriences_title {
+	font-family: 'Nunito Sans';
+font-size: 50px;
+line-height: 61px;
+font-weight: 600;
+letter-spacing: 0.02em;
+color: #091e40;
+margin-bottom: 125px;
+text-align: center;
+}
+.expiriences_subtitle {
+	font-family: 'Nunito Sans';
+font-size: 26px;
+line-height: 50px;
+font-weight: 400;
+letter-spacing: 0.01em;
+color: #091e40;
+text-align: center;
+margin-bottom: 80px;
+}
+.slider-smole_name{
+	margin: 10px 0 10px 0;
+}
+.slider-smole_nomber{
+	margin-bottom: 10px;
+}
+.slider-smole{}
+@media(max-width: 768px){
+	.main_expiriences {
+	padding: 63px 0 125px 0;
+}
+.expiriences_title {
+	margin-bottom: 50px;
+}
+}
+/*-------------------------------------------------------------------------------*/
+.main_enjoy {
+	background: url('../img/rectangle_8_266.png')0 0/cover no-repeat;
+	padding: 315px 0 315px 0;
+}
+.row_enjoy {
+	flex: 100%;
+	justify-content: center;
+
+}
+.enjoy_title {
+	text-align: center;
+	font-family: 'Nunito Sans';
+font-size: 38.7px;
+line-height: 47px;
+font-weight: 600;
+text-transform: uppercase;
+letter-spacing: 0.02em;
+color: #ffffff;
+margin-bottom: 45px;
+
+}
+.enjoy_subtitle {
+text-align: center;
+font-family: 'Nunito Sans';
+font-size: 60px;
+line-height: 75px;
+font-weight: 800;
+text-transform: uppercase;
+letter-spacing: 0.02em;
+color: #ffffff;
+margin-bottom: 88px;
+}
+.columns_enjoy_items {
+	display: flex;
+	justify-content: center;
+	justify-content: space-between;
+	align-items: center;
+}
+.enjoy_item {
+	font-family: 'Nunito Sans';
+	font-size: 24px;
+	line-height: 45px;
+	font-weight: 600;
+	letter-spacing: 0.01em;
+	color: #ffffff;
+	padding: 18px 86px 18px 40px;
+	background-color: rgba(255,255,255,0.2);
+}
+.enjoy_item option {
+		color: #3984f3;
+
+}
+.enjoy_item_botton{
+ font-family: 'Nunito Sans';
+font-size: 23px;
+line-height: 45px;
+font-weight: 600;
+letter-spacing: 0.01em;
+color: #ffffff;
+
+background-color: #3984f3;
+padding: 18px 86px 18px 40px;
+
+}
+
+@media(max-width: 1000px){
+	.columns_enjoy_items{
+		flex-direction: column;
+		text-align: center;
+	}
+	.enjoy_item{
+		margin-bottom: 25px;
+
+	}
+	.enjoy_title {
+		font-size: 28px;
+}
+	.enjoy_subtitle {
+		font-size: 40px;
+		margin-bottom: 50px;
+}
+.main_enjoy {
+	padding: 150px 0 190px 0;
+}
+}
+/*--------------------------------------------------------------------------------*/
+.main_footer {
+	padding: 76px 0 83px 0;
+	background-color:#ffffff ;
+}
+.row_footer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.footer_menu {
+	
+}
+.footer_menu_items {
+	font-family: 'Nunito Sans';
+	font-size: 18px;
+	line-height: 49px;
+	font-weight: 400;
+	letter-spacing: 0.025em;
+	color: #2b323a;
+	display: flex;
+	flex-wrap: wrap;
+	margin-bottom: 45px;
+	justify-content: space-between;
+}
+.footer_menu_items li{
+	margin-right: 5px;
+}
+.footer_copyring {
+	font-family: 'Nunito Sans';
+	font-size: 15px;
+	line-height: 49px;
+	font-weight: 600;
+	letter-spacing: 0.025em;
+	color: #2b323a;
+	margin-bottom: 35px;
+	text-align: center;
+}
+.footer_copyring span {
+	font-family: 'Nunito Sans';
+	font-size: 15px;
+	line-height: 49px;
+	font-weight: 600;
+	letter-spacing: 0.025em;
+	color: #c6c6c6;
+}
+.footer_social {
+	display: flex;
+	justify-content: center;
+}
+.footer_logo_logo {
+   margin-right: 45px;
+	position: relative;
+}
+
+.footer_logo_elips {
+	position: absolute;
+	top: 15px;
+	left: 15px;
+}
+
+
+@media(max-width:653px){
+	.footer_column{
+		padding: 10px;
+	}
+	.footer_social{
+		flex-direction: column;
+	}
+	.footer_logo_logo{
+		margin: 0 auto;
+		padding-bottom: 40px;
+
+	}
+	.main_footer {
+	padding: 36px 0 43px 0;
+}
+}
+
+/*---------------------------------------------------------------------------*/
+
